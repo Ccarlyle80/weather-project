@@ -1,4 +1,5 @@
 body {
+  background-color: #b1bed5;
   display: block;
   font-family: "Poppins";
   margin: 8px;
@@ -14,7 +15,8 @@ h3 {
   font-size: 20px;
 }
 .container {
-  border: 6px solid #0d6efd;
+  background-color: #f4f3f3;
+  border: 6px solid #dfdfdf;
   border-radius: 6px;
   margin: 0px auto;
   max-width: 600px;
@@ -44,14 +46,32 @@ h3 {
   position: relative;
   top: -10px;
 }
-#city-search {
+.city-search {
+  border-color: #dfdfdf;
   display: inline;
   margin: 10px 8px 0 4px;
   width: 35%;
 }
-#location-button {
+.location-button {
+  background-color: #bfd8d5;
+  border-color: #dfdfdf;
+  border-width: 4px;
   font-size: small;
   margin-right: 4px;
+}
+.location-button:hover {
+  background-color: rgb(191, 216, 213, 0.4);
+  border-color: rgb(191, 216, 213, 0.4);
+}
+
+.search-city-button {
+  background-color: #b1bed5;
+  border-color: #b1bed5;
+  color: #fff;
+}
+.search-city-button:hover {
+  background-color: rgb(177, 190, 213, 0.4);
+  border-color: rgb(177, 190, 213, 0.4);
 }
 #search {
   text-align: center;
