@@ -1,0 +1,51 @@
+body {
+  display: block;
+  font-family: "Poppins";
+  margin: 8px;
+}
+h1 {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+h2 {
+  margin: 20px 0;
+}
+h3 {
+  font-size: 20px;
+}
+.container {
+  border: 6px solid #0d6efd;
+  margin: 0px auto;
+  max-width: 600px;
+  padding: 30px;
+}
+.future-icon {
+  padding: 10px 0 0;
+  text-align: center;
+}
+.future-info {
+  margin: 25px 0 10px;
+  text-align: center;
+}
+
+.today-icon {
+  margin: 15px;
+  text-align: right;
+}
+.units {
+  font-size: 15px;
+  position: relative;
+  top: -10px;
+}
+#city-search {
+  display: inline;
+  margin: 10px 8px 0 4px;
+  width: 35%;
+}
+#location-button {
+  font-size: small;
+  margin-right: 4px;
+}
+#search {
+  text-align: center;
+}
