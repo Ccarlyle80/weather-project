@@ -15,9 +15,16 @@ h3 {
 }
 .container {
   border: 6px solid #0d6efd;
+  border-radius: 6px;
   margin: 0px auto;
   max-width: 600px;
   padding: 30px;
+}
+.footer {
+  font-size: smaller;
+  margin: 0px auto;
+  max-width: 600px;
+  padding-top: 10px;
 }
 .future-icon {
   padding: 10px 0 0;
