@@ -36,15 +36,22 @@ h3 {
   margin: 25px 0 10px;
   text-align: center;
 }
-
+.today-details {
+  font-size: 20px;
+}
 .today-icon {
-  margin: 15px;
+  font-size: 50px;
+  margin: 12px;
   text-align: right;
+}
+.today-info {
+  font-size: 40px;
+  margin: 15px;
 }
 .units {
   font-size: 15px;
   position: relative;
-  top: -10px;
+  top: -18px;
 }
 .city-search {
   border-color: #dfdfdf;
@@ -75,4 +82,10 @@ h3 {
 }
 #search {
   text-align: center;
+}
+#currentDate {
+  font-size: 24px;
+}
+#weatherDescription {
+  text-transform: capitalize;
 }
