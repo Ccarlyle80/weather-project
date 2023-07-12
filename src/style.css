@@ -60,26 +60,32 @@ h3 {
   width: 35%;
 }
 .location-button {
-  background-color: #bfd8d5;
+  background-color: #b1bed5;
   border-color: #dfdfdf;
   border-width: 4px;
   font-size: small;
   margin-right: 4px;
 }
 .location-button:hover {
-  background-color: rgb(191, 216, 213, 0.4);
+  background-color: rgb(177, 190, 213, 0.4);
   border-color: rgb(191, 216, 213, 0.4);
 }
 
 .search-city-button {
-  background-color: #b1bed5;
-  border-color: #b1bed5;
+  background-color: rgb(191, 216, 213);
+  border-color: #bfd8bf;
   color: #fff;
 }
 .search-city-button:hover {
-  background-color: rgb(177, 190, 213, 0.4);
-  border-color: rgb(177, 190, 213, 0.4);
+  background-color: rgb(191, 216, 213, 0.4);
+  border-color: rgb(191, 216, 213, 0.4);
 }
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
 #search {
   text-align: center;
 }

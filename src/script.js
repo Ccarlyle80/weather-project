@@ -11,26 +11,12 @@ return `${day} ${hour}:${minutes}`;
 }
 date.innerHTML = formatDate(new Date());
 
-
-
-function fahrenheit(){
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = ("66");
-}
-let fahrenheitClick = document.querySelector("#fahrenheit-link");
-fahrenheitClick.addEventListener("click", fahrenheit);
-
-function celsius(){
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = ("20");
-}
-let celsiusClick = document.querySelector("#celsius-link");
-celsiusClick.addEventListener("click", celsius);
-
-
 function displayWeatherData(response) {
+  
+  celsiusTemperature = response.data.main.temp;
+  
   let city = response.data.name;
-  let tempCelsius = Math.round(response.data.main.temp);
+  let tempCelsius = Math.round(celsiusTemperature);
   let description = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
@@ -89,5 +75,30 @@ function defaultCity(city){
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeatherData);
 }
+
+function fahrenheit(event){
+  event.preventDefault();
+  celsiusClick.classList.remove("active");
+  fahrenheitClick.classList.add("active");
+  let fahrenheitTemperature = Math.round((celsiusTemperature*9/5)+32);
+  let temperature = document.querySelector(".temperature");
+  temperature.innerHTML = fahrenheitTemperature;
+}
+
+function celsius(event){
+  event.preventDefault();
+  fahrenheitClick.classList.remove("active");
+  celsiusClick.classList.add("active");
+  let temperature = document.querySelector(".temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusClick = document.querySelector("#celsius-link");
+celsiusClick.addEventListener("click", celsius);
+
+let fahrenheitClick = document.querySelector("#fahrenheit-link");
+fahrenheitClick.addEventListener("click", fahrenheit);
+
+let celsiusTemperature = null;
+
 
 defaultCity("London");
