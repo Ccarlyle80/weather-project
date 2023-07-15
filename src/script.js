@@ -2,37 +2,36 @@ let date = document.querySelector("#currentDate");
 let now = new Date();
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[now.getDay()];
+let dateMonth = now.getDate();
+let suffix = ["st", "nd", "rd", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th", "th", "st"]
+let dateSuffix = suffix[now.getDate()];
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let month = months[now.getMonth()];
 let hour = now.getHours();
 hour = hour.toString().padStart(2, "0");
 let minutes = now.getMinutes();
 minutes = minutes.toString().padStart(2, "0");
 function formatDate(){
-return `${day} ${hour}:${minutes}`;
+return `${day} ${dateMonth}${dateSuffix} ${month}, ${hour}:${minutes}`;
 }
 date.innerHTML = formatDate(new Date());
 
 function displayWeatherData(response) {
-  
   celsiusTemperature = response.data.main.temp;
-  
-  let city = response.data.name;
-  let tempCelsius = Math.round(celsiusTemperature);
-  let description = response.data.weather[0].description;
-  let humidity = response.data.main.humidity;
-  let wind = Math.round(response.data.wind.speed);
   let cityName = document.querySelector("#cityName");
+  let todayWeatherIcon = document.querySelector("#todayIcon");
   let temperature = document.querySelector(".temperature");
   let weatherDescription = document.querySelector("#weatherDescription");
   let cityHumidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#windSpeed"); 
-  if (city) {
-    cityName.innerHTML = `${city}`;
-    temperature.innerHTML = `${tempCelsius}`;
-    weatherDescription.innerHTML = `${description}`;
-    cityHumidity.innerHTML = `${humidity}`;
-    windSpeed.innerHTML = `${wind}`;
-   }
-  }
+    cityName.innerHTML = response.data.name;
+    todayWeatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    todayWeatherIcon.setAttribute("alt", response.data.weather[0].description);
+    temperature.innerHTML = Math.round(celsiusTemperature);
+    weatherDescription.innerHTML = response.data.weather[0].description;
+    cityHumidity.innerHTML = response.data.main.humidity;
+    windSpeed.innerHTML = Math.round(response.data.wind.speed);
+    }
 
 function retrieveCityData(city){
   let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
@@ -78,20 +77,20 @@ function defaultCity(city){
 
 function fahrenheit(event){
   event.preventDefault();
-  celsiusClick.classList.remove("active");
-  fahrenheitClick.classList.add("active");
-  let fahrenheitTemperature = Math.round((celsiusTemperature*9/5)+32);
+  celsiusClick.classList.remove("hide-link");
+  fahrenheitClick.classList.add("hide-link");
   let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = fahrenheitTemperature;
+  temperature.innerHTML = Math.round((celsiusTemperature*9/5)+32);
 }
 
 function celsius(event){
   event.preventDefault();
-  fahrenheitClick.classList.remove("active");
-  celsiusClick.classList.add("active");
+  fahrenheitClick.classList.remove("hide-link");
+  celsiusClick.classList.add("hide-link");
   let temperature = document.querySelector(".temperature");
   temperature.innerHTML = Math.round(celsiusTemperature);
 }
+
 let celsiusClick = document.querySelector("#celsius-link");
 celsiusClick.addEventListener("click", celsius);
 
@@ -99,6 +98,5 @@ let fahrenheitClick = document.querySelector("#fahrenheit-link");
 fahrenheitClick.addEventListener("click", fahrenheit);
 
 let celsiusTemperature = null;
-
 
 defaultCity("London");

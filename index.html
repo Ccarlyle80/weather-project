@@ -62,12 +62,14 @@
         <span id="currentDate"></span>
       </h1>
       <h2>
-        <div class="row">
-          <div class="col-2 today-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="row todays-weather">
+          <div class="col-2 today-icon">
+            <img src="" alt="" id="todayIcon" />
+          </div>
           <div class="col-3 today-info">
             <span class="temperature"></span>
             <span class="units">
-              <a href="#" id="celsius-link" class="active">°C</a> |
+              <a href="#" id="celsius-link" class="hide-link">°C</a> |
               <a href="#" id="fahrenheit-link">°F</a>
             </span>
           </div>
@@ -81,6 +83,7 @@
         </div>
       </h2>
       <h3>
+        <div class="forecast">Five day forecast</div>
         <div class="row">
           <div class="col future-info">Mon<br />14°C<br /></div>
           <div class="col future-info">Tue<br />13°C<br /></div>
