@@ -24,12 +24,12 @@ return days[day];
 }
 
 function displayForecastData(response) {
-let forecast = response.data.daily;
-let forecastElement = document.querySelector("#forecast");
-let forecastHTML = `<div class="row">`;
+  forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
   forecast.forEach(function(forecastDay, index){
     if (index >0 && index < 6) {
-  forecastHTML = forecastHTML + `  
+    forecastHTML = forecastHTML + `  
   <div class="col future-info">
     ${formatForecastDay(forecastDay.time)}<br />
     <div id = forecastTemperature>${Math.round(forecastDay.temperature.maximum)}°</div>
@@ -52,11 +52,11 @@ function displayWeatherData(response) {
     cityName.innerHTML = response.data.city;
     todayWeatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
     todayWeatherIcon.setAttribute("alt", response.data.condition.description);
-    temperature.innerHTML = Math.round(celsiusTemperature);
+    temperature.innerHTML = Math.round(celsiusTemperature)+"°C";
     weatherDescription.innerHTML = response.data.condition.description;
     cityHumidity.innerHTML = response.data.temperature.humidity;
-    windSpeed.innerHTML = Math.round(response.data.wind.speed);
-    }
+    windSpeed.innerHTML = Math.round(response.data.wind.speed); 
+  }
 
 function retrieveCityData(city){
   let apiKey = "28432465df08o7d6059bet758cfa8308";
@@ -106,28 +106,7 @@ function defaultCity(city){
   axios.get(apiUrlForecast).then(displayForecastData);
 }
 
-function fahrenheit(event){
-  event.preventDefault();
-  celsiusClick.classList.remove("hide-link");
-  fahrenheitClick.classList.add("hide-link");
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = Math.round((celsiusTemperature*9/5)+32);
-}
-
-function celsius(event){
-  event.preventDefault();
-  fahrenheitClick.classList.remove("hide-link");
-  celsiusClick.classList.add("hide-link");
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusClick = document.querySelector("#celsiusLink");
-celsiusClick.addEventListener("click", celsius);
-
-let fahrenheitClick = document.querySelector("#fahrenheitLink");
-fahrenheitClick.addEventListener("click", fahrenheit);
-
 let celsiusTemperature = null;
 
 defaultCity("London");
+

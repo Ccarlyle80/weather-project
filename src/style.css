@@ -49,23 +49,28 @@ p {
 }
 
 .todays-weather {
+  align-self: center;
   line-height: 1.5;
+  padding: 0;
 }
 
 .today-details {
+  align-self: center;
   font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.today-info {
+  align-self: center;
+  font-size: 40px;
   margin: 10px;
+  padding: 0;
+  text-align: center;
 }
 
-.today-info {
-  font-size: 40px;
-  margin: 15px;
+.today-icon {
+  padding: 0;
   text-align: right;
-}
-.units {
-  font-size: 15px;
-  position: relative;
-  top: -18px;
 }
 .city-search {
   border-color: #dfdfdf;
@@ -94,11 +99,7 @@ p {
   background-color: rgb(191, 216, 213, 0.4);
   border-color: rgb(191, 216, 213, 0.4);
 }
-.hide-link {
-  color: black;
-  cursor: default;
-  text-decoration: none;
-}
+
 #search {
   text-align: center;
 }
