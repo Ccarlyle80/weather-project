@@ -16,26 +16,27 @@ return `${day} ${dateMonth}${dateSuffix} ${month}, ${hour}:${minutes}`;
 }
 date.innerHTML = formatDate(new Date());
 
+function formatForecastDay(time) {
+let date = new Date(time *1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+return days[day];
+}
+
 function displayForecastData(response) {
-//  console.log(response.data.daily);
-// celsiusForecastTemperature = response.data.daily.temperature.maximum;
-// let forecastWeatherIcon = document.querySelector("#forecastIcon");
-// let forecastTemperature = document.querySelector("#forecastTemperature");
-//    forecastWeatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily.condition.icon}.png`);
-//    forecastWeatherIcon.setAttribute("alt", response.data.daily.condition.description);
-//    forecastTemperature.innerHTML = Math.round(celsiusForecastTemperature);
- let forecastElement = document.querySelector("#forecast");
- let forecastHTML = `<div class="row">`;
- let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function(day){
+let forecast = response.data.daily;
+let forecastElement = document.querySelector("#forecast");
+let forecastHTML = `<div class="row">`;
+  forecast.forEach(function(forecastDay, index){
+    if (index >0 && index < 6) {
   forecastHTML = forecastHTML + `  
   <div class="col future-info">
-    ${day}<br />
-    <div id = forecastTemperature>14</div>
-    <img src="" alt="test" id="forecastIcon" />
+    ${formatForecastDay(forecastDay.time)}<br />
+    <div id = forecastTemperature>${Math.round(forecastDay.temperature.maximum)}°</div>
+    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="${forecastDay.condition.description}" width="70" height="70" id="forecastIcon" />
   </div>
   `;
-  })
+  }})
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
